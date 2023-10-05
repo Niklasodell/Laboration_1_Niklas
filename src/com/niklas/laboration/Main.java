@@ -14,12 +14,12 @@ public class Main {
         dice = new Dice(numDiceSides);
         scan = new Scanner(System.in);
 
-        System.out.println("Welcome to my dice game, please read the instructions as they come up!");
+        System.out.println("Welcome to my dice game, hope you will have fun! :)");
         String playerName;
         int playerCount = 1;
 
         while (true) {
-            System.out.print("Enter name " + playerCount + " or 'done' to start: ");
+            System.out.print("Enter name " + playerCount + " or 'done' to begin: ");
             playerName = scan.nextLine().trim();
 
             if (playerName.equalsIgnoreCase("done")) {
@@ -51,7 +51,7 @@ public class Main {
 
             System.out.println("End of round " + round + "\n");
 
-            System.out.print("Do you want to play another round? (yes/no): ");
+            System.out.print("If you want to play another round enter 'yes' or 'no': ");
             String response = scan.nextLine().toLowerCase();
 
             if (response.equals("no")) {
