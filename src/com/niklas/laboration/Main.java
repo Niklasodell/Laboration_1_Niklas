@@ -1,6 +1,9 @@
 package com.niklas.laboration;
 
+import javax.xml.namespace.QName;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Scanner;
@@ -15,10 +18,11 @@ public class Main {
         players = new ArrayList<>();
         dice = new Dice(numDice);
         scan = new Scanner(System.in);
-        
+
 
         String playerName;
         int playerCount = 1;
+
 
         while (true) {
             System.out.print("Enter name " + playerCount + " or 'done' to begin: ");
@@ -53,10 +57,11 @@ public class Main {
 
             System.out.println("End of round " + round + "\n");
 
-            System.out.print("If you want to play another round enter 'yes' or 'no': ");
+
+            System.out.print("For another round, enter 'yes' or 'no': ");
             String response = scan.nextLine().toLowerCase();
 
-            if (response.equals("no")) {
+            if (response.equalsIgnoreCase("no")) {
                 break;
             }
 
@@ -68,10 +73,16 @@ public class Main {
         System.out.println("\nFinal Scores:");
         for (Player player : players) {
             System.out.println(player.getName() + ": " + player.getScore());
-
-            List<Player> sortedList = players.stream().sorted().collect(Collectors.toList());
-            System.out.println(sortedList);
         }
+
+        sortPlayers();
+
+        System.out.println("Winner: " + players.get(0).getName() + " with the score of:  " + players.get(0).getScore());
+    }
+
+    public void sortPlayers() {
+        Collections.sort(players, (player1, player2) ->
+                Integer.compare(player2.getScore(), player1.getScore()));
     }
 
     public static void main(String[] args) {
@@ -79,3 +90,4 @@ public class Main {
         diceGame.play();
     }
 }
+
