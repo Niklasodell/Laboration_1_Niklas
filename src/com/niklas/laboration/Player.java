@@ -20,5 +20,6 @@ public class Player {
     public void addToScore(int points) {
         score += points;
     }
+
 }
 

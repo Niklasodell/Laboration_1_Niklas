@@ -1,20 +1,22 @@
 package com.niklas.laboration;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public List<Player> players;
-    public Dice dice;
-    public Scanner scan;
+    List<Player> players;
+    Dice dice;
+    Scanner scan;
 
-    public Main(int numDiceSides) {
+    public Main(int numDice) {
+
         players = new ArrayList<>();
-        dice = new Dice(numDiceSides);
+        dice = new Dice(numDice);
         scan = new Scanner(System.in);
+        
 
-        System.out.println("Welcome to my dice game, hope you will have fun! :)");
         String playerName;
         int playerCount = 1;
 
@@ -24,7 +26,7 @@ public class Main {
 
             if (playerName.equalsIgnoreCase("done")) {
                 if (players.isEmpty()) {
-                    System.out.println("You need least one player to start the game.");
+                    System.out.println("You need atleast one player to start the game.");
                     continue;
                 } else {
                     break;
@@ -66,6 +68,9 @@ public class Main {
         System.out.println("\nFinal Scores:");
         for (Player player : players) {
             System.out.println(player.getName() + ": " + player.getScore());
+
+            List<Player> sortedList = players.stream().sorted().collect(Collectors.toList());
+            System.out.println(sortedList);
         }
     }
 
