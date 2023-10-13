@@ -13,19 +13,19 @@ public class Main {
     Dice dice;
     Scanner scan;
 
-    public Main(int numDice) {
+    public Main(int numDice, Scanner scanner) {
 
         players = new ArrayList<>();
         dice = new Dice(numDice);
-        scan = new Scanner(System.in);
+        scan = scanner;
+    }
 
-
+    public void startGame() {
         String playerName;
         int playerCount = 1;
 
-
         while (true) {
-            System.out.print("Enter name " + playerCount + " or 'done' to begin: ");
+            System.out.print("Enter name of player " + playerCount + " or 'done' to begin: ");
             playerName = scan.nextLine().trim();
 
             if (playerName.equalsIgnoreCase("done")) {
@@ -57,7 +57,6 @@ public class Main {
 
             System.out.println("End of round " + round + "\n");
 
-
             System.out.print("For another round, enter 'yes' or 'no': ");
             String response = scan.nextLine().toLowerCase();
 
@@ -86,8 +85,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main diceGame = new Main(6);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the amount of dice you want to use for the game: ");
+        int numDice = scanner.nextInt();
+        scanner.nextLine();
+
+        Main diceGame = new Main(numDice, scanner);
+        diceGame.startGame();
         diceGame.play();
+
+        scanner.close();
     }
 }
 

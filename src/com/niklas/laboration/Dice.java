@@ -15,3 +15,4 @@ public class Dice {
         return random.nextInt(sides) + 1;
     }
 }
+
