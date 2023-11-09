@@ -16,7 +16,7 @@ public class Main {
     public Main(int numDice, Scanner scanner) {
 
         players = new ArrayList<>();
-        dice = new Dice(numDice);
+        dice = new Dice(6, numDice);
         scan = scanner;
     }
 
